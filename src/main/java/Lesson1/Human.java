@@ -9,6 +9,9 @@ public class Human implements Runable, Jumpable{
     public void setStillActive(boolean state){
         this.stillActive=state;
     }
+
+    public boolean getStillActive () {return this.stillActive;}
+
     Human(String name, int maxRunningDistance, int maxJumpingDistance){
         this.name = name;
         this.maxRunningDistance=maxRunningDistance;
@@ -24,6 +27,7 @@ public class Human implements Runable, Jumpable{
         else {
             System.out.printf("Human %s were not able to run %d meters\n", name, length);
             setStillActive(false);
+            System.out.printf("!!! Human %s is out of the race!\n", name);
         }
     }
     @Override
@@ -34,6 +38,7 @@ public class Human implements Runable, Jumpable{
         else {
             System.out.printf("Human %s could not jump %d meters\n", name, height);
             setStillActive(false);
+            System.out.printf("!!! Human %s is out of the race!\n", name);
         }
     }
 }

@@ -1,12 +1,11 @@
 package Lesson1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 
 public class Program {
     public static void main(String[] args) {
-        //Robot r = new Robot();
-        Runable[] contestantList = {
+
+        Object[] contestantList = {
                 new Robot("T1000",800,30),
                 new Robot("R2D2",40,2),
                 new Human("Ivan",1200,40),
@@ -23,10 +22,28 @@ public class Program {
                 new Wall("Final wall",29)
         };
 
-        for (Object contestant: contestantList){
-            for (Object obstruction : obstructionList){
-                if (obstruction instanceof Wall){
-                    //(Wall) ((Wall) obstruction).obstruct((Jumpable) contestant);
+        for (Object obstruction : obstructionList){
+            for (Object contestant: contestantList){
+                if (contestant instanceof Human ){
+                    if (!((Human) contestant).getStillActive()){
+                        continue;
+                    }
+                }
+                if (contestant instanceof Robot ){
+                    if (!((Robot) contestant).getStillActive()){
+                        continue;
+                    }
+                }
+                if (contestant instanceof Cat){
+                    if(!(((Cat) contestant).getStillActive())){
+                        continue;
+                    }
+                }
+                if (obstruction instanceof Wall && contestant instanceof Jumpable){
+                    ((Wall) obstruction).obstruct((Jumpable) contestant);
+                }
+                if (obstruction instanceof Treadmill && contestant instanceof Runable){
+                    ((Treadmill) obstruction).obstruct((Runable) contestant);
                 }
             }
         }

@@ -9,6 +9,7 @@ public class Robot implements Runable, Jumpable {
     public void setStillActive(boolean state){
         this.stillActive=state;
     }
+    public boolean getStillActive(){return this.stillActive;}
 
     Robot (String model, int maxRunningDistance, int maxJumpingDistance){
         this.model=model;
@@ -24,6 +25,8 @@ public class Robot implements Runable, Jumpable {
         else {
             System.out.printf("Robot %s were not able to run %d meters\n", model, length);
             setStillActive(false);
+            System.out.printf("!!! Robot %s is out of the race!\n", model);
+
         }
     }
     @Override
@@ -34,6 +37,8 @@ public class Robot implements Runable, Jumpable {
         else {
             System.out.printf("Robot %s could not jump %d meters\n", model, height);
             setStillActive(false);
+            System.out.printf("!!! Robot %s is out of the race!\n", model);
+
         }
     }
 }

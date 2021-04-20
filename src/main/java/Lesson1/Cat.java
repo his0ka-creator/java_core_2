@@ -9,6 +9,7 @@ public class Cat implements Runable, Jumpable {
     public void setStillActive(boolean state){
         this.stillActive=state;
     }
+    public boolean getStillActive(){return this.stillActive;}
 
     Cat (String name, int maxRunningDistance, int maxJumpingDistance){
         this.name=name;
@@ -24,6 +25,7 @@ public class Cat implements Runable, Jumpable {
         else {
             System.out.printf("Cat %s were not able to run %d meters\n", name, length);
             setStillActive(false);
+            System.out.printf("!!! Cat %s is out of the race!!\n", name);
         }
     }
     @Override
@@ -34,6 +36,7 @@ public class Cat implements Runable, Jumpable {
         else {
             System.out.printf("Cat %s could not jump %d meters\n", name , height);
             setStillActive(false);
+            System.out.printf("!!! Cat %s is out of the race!!\n", name);
         }
     }
 }
